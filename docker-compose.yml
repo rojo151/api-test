@@ -1,0 +1,36 @@
+version: "3"
+services:
+  app:
+    image: api-test  
+    ports: 
+      - 5000:5000 
+    depends_on: 
+      - db
+    environment: 
+      ENV_PWD: admin 
+      ENV_USER: admin 
+      ENV_HOST: db  
+    container_name: webApp
+    restart: always 
+    networks: 
+      - my-net
+  db:
+    image: mongo:latest 
+    ports: 
+      - 27017:27017     
+    container_name: mymongo
+    environment: 
+      MONGO_INITDB_DATABASE: database
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    volumes: 
+    - ./database-data:/data/db
+    restart: always 
+    networks: 
+      - my-net
+networks:
+  my-net: 
+    name: my-net
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "true"
