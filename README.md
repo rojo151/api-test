@@ -1,6 +1,6 @@
-# -testAPI: python-flask-mongo-docker
+# REST API: python-flask-mongo-docker
 
-This is a test RESTful API done with Python and MongoDB using Flask microframework. The project uses Docker to deploy both services.
+This is a simple RESTful API done with Python and MongoDB using Flask microframework. The project uses Docker to deploy both services.
 
 ## Stack
 
@@ -13,7 +13,7 @@ This is a test RESTful API done with Python and MongoDB using Flask microframewo
 
 First of all, [install Docker](https://www.docker.com/products/docker-desktop) to run the containers:
 
-Run 'docker-compose up' to start both the Flask app and the MongoDB in a dev environment
+Run 'docker-compose up' to start both the Flask app and the MongoDB in a production environment. The images will be downloaded form Docker Hub.
 
 ```sh
 $ docker-compose up
@@ -43,7 +43,8 @@ Response:
     request.
 
 The result of the POST request can be checked in the HTTP response, as well as in the MongoDB, available in the port 27017.
-The new entry will be stored inside the 'jsonCollection' collection, found in the 'testClient' database. All the entries of the database are stored in a persistent volume to avoid the loss of the data.
+The new entry will be stored inside the 'jsonCollection' collection, found in the 'testClient' database.
+All the entries of the database are stored in a persistent volume to avoid the loss of the data.
 
 ## License
 
